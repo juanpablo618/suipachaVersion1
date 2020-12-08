@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbSeguimientoEditDlg" widgetVar="TbSeguimientoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbSeguimientoTitle}">
+            <h:form id="TbSeguimientoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbSeguimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbSeguimientoLabel_seguimientoID}" for="seguimientoID" />
+                        <p:inputText id="seguimientoID" value="#{tbSeguimientoController.selected.seguimientoID}" title="#{bundle.EditTbSeguimientoTitle_seguimientoID}" required="true" requiredMessage="#{bundle.EditTbSeguimientoRequiredMessage_seguimientoID}"/>
+                        <p:outputLabel value="#{bundle.EditTbSeguimientoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{tbSeguimientoController.selected.estado}" title="#{bundle.EditTbSeguimientoTitle_estado}" required="true" requiredMessage="#{bundle.EditTbSeguimientoRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditTbSeguimientoLabel_situacion}" for="situacion" />
+                        <p:inputText id="situacion" value="#{tbSeguimientoController.selected.situacion}" title="#{bundle.EditTbSeguimientoTitle_situacion}" />
+                        <p:outputLabel value="#{bundle.EditTbSeguimientoLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{tbSeguimientoController.selected.usuario}" title="#{bundle.EditTbSeguimientoTitle_usuario}" required="true" requiredMessage="#{bundle.EditTbSeguimientoRequiredMessage_usuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbSeguimientoController.update}" value="#{bundle.Save}" update="display,:TbSeguimientoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbSeguimientoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbSeguimientoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

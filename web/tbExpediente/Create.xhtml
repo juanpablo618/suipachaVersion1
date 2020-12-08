@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbExpedienteCreateDlg" widgetVar="TbExpedienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTbExpedienteTitle}">
+            <h:form id="TbExpedienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbExpedienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_expedienteID}" for="expedienteID" />
+                        <p:inputText id="expedienteID" value="#{tbExpedienteController.selected.expedienteID}" title="#{bundle.CreateTbExpedienteTitle_expedienteID}" required="true" requiredMessage="#{bundle.CreateTbExpedienteRequiredMessage_expedienteID}"/>
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_demandante}" for="demandante" />
+                        <p:inputText id="demandante" value="#{tbExpedienteController.selected.demandante}" title="#{bundle.CreateTbExpedienteTitle_demandante}" required="true" requiredMessage="#{bundle.CreateTbExpedienteRequiredMessage_demandante}"/>
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_seguimiento}" for="seguimiento" />
+                        <p:inputText id="seguimiento" value="#{tbExpedienteController.selected.seguimiento}" title="#{bundle.CreateTbExpedienteTitle_seguimiento}" required="true" requiredMessage="#{bundle.CreateTbExpedienteRequiredMessage_seguimiento}"/>
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_nroCaratula}" for="nroCaratula" />
+                        <p:inputText id="nroCaratula" value="#{tbExpedienteController.selected.nroCaratula}" title="#{bundle.CreateTbExpedienteTitle_nroCaratula}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="MM/dd/yyyy" value="#{tbExpedienteController.selected.fechaInicio}" title="#{bundle.EditTbExpedienteTitle_fechaInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{tbExpedienteController.selected.fechaFin}" title="#{bundle.EditTbExpedienteTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_resolucion}" for="resolucion" />
+                        <p:inputText id="resolucion" value="#{tbExpedienteController.selected.resolucion}" title="#{bundle.CreateTbExpedienteTitle_resolucion}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_clasificacionDemanda}" for="clasificacionDemanda" />
+                        <p:inputText id="clasificacionDemanda" value="#{tbExpedienteController.selected.clasificacionDemanda}" title="#{bundle.CreateTbExpedienteTitle_clasificacionDemanda}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_descripcionDemanda}" for="descripcionDemanda" />
+                        <p:inputText id="descripcionDemanda" value="#{tbExpedienteController.selected.descripcionDemanda}" title="#{bundle.CreateTbExpedienteTitle_descripcionDemanda}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_barrio}" for="barrio" />
+                        <p:inputText id="barrio" value="#{tbExpedienteController.selected.barrio}" title="#{bundle.CreateTbExpedienteTitle_barrio}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_prioridad}" for="prioridad" />
+                        <p:inputText id="prioridad" value="#{tbExpedienteController.selected.prioridad}" title="#{bundle.CreateTbExpedienteTitle_prioridad}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_tipologiaID}" for="tipologiaID" />
+                        <p:inputText id="tipologiaID" value="#{tbExpedienteController.selected.tipologiaID}" title="#{bundle.CreateTbExpedienteTitle_tipologiaID}" />
+                        <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_grupoId}" for="grupoId" />
+                        <p:inputText id="grupoId" value="#{tbExpedienteController.selected.grupoId}" title="#{bundle.CreateTbExpedienteTitle_grupoId}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbExpedienteController.create}" value="#{bundle.Save}" update="display,:TbExpedienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'TbExpedienteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbExpedienteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

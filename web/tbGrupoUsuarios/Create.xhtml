@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbGrupoUsuariosCreateDlg" widgetVar="TbGrupoUsuariosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTbGrupoUsuariosTitle}">
+            <h:form id="TbGrupoUsuariosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbGrupoUsuariosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTbGrupoUsuariosLabel_grupousuarioID}" for="grupousuarioID" />
+                        <p:inputText id="grupousuarioID" value="#{tbGrupoUsuariosController.selected.grupousuarioID}" title="#{bundle.CreateTbGrupoUsuariosTitle_grupousuarioID}" required="true" requiredMessage="#{bundle.CreateTbGrupoUsuariosRequiredMessage_grupousuarioID}"/>
+                        <p:outputLabel value="#{bundle.CreateTbGrupoUsuariosLabel_grupoResolutor}" for="grupoResolutor" />
+                        <p:inputText id="grupoResolutor" value="#{tbGrupoUsuariosController.selected.grupoResolutor}" title="#{bundle.CreateTbGrupoUsuariosTitle_grupoResolutor}" required="true" requiredMessage="#{bundle.CreateTbGrupoUsuariosRequiredMessage_grupoResolutor}"/>
+                        <p:outputLabel value="#{bundle.CreateTbGrupoUsuariosLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{tbGrupoUsuariosController.selected.usuario}" title="#{bundle.CreateTbGrupoUsuariosTitle_usuario}" required="true" requiredMessage="#{bundle.CreateTbGrupoUsuariosRequiredMessage_usuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbGrupoUsuariosController.create}" value="#{bundle.Save}" update="display,:TbGrupoUsuariosListForm:datalist,:growl" oncomplete="handleSubmit(args,'TbGrupoUsuariosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbGrupoUsuariosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

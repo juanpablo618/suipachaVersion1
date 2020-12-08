@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbSeguimientoViewDlg" widgetVar="TbSeguimientoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTbSeguimientoTitle}">
+            <h:form id="TbSeguimientoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbSeguimientoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTbSeguimientoLabel_seguimientoID}"/>
+                        <h:outputText value="#{tbSeguimientoController.selected.seguimientoID}" title="#{bundle.ViewTbSeguimientoTitle_seguimientoID}"/>
+                        <h:outputText value="#{bundle.ViewTbSeguimientoLabel_estado}"/>
+                        <h:outputText value="#{tbSeguimientoController.selected.estado}" title="#{bundle.ViewTbSeguimientoTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewTbSeguimientoLabel_situacion}"/>
+                        <h:outputText value="#{tbSeguimientoController.selected.situacion}" title="#{bundle.ViewTbSeguimientoTitle_situacion}"/>
+                        <h:outputText value="#{bundle.ViewTbSeguimientoLabel_usuario}"/>
+                        <h:outputText value="#{tbSeguimientoController.selected.usuario}" title="#{bundle.ViewTbSeguimientoTitle_usuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TbSeguimientoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

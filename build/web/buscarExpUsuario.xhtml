@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+
+        <title>SGE Suipacha</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="https://www.suipacha.gob.ar/sites/default/files/favico.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+        <style>
+            @import url("https://www.suipacha.gob.ar/modules/system/system.base.css?q2rmqg");
+        </style>
+        <style>
+            @import url("https://www.suipacha.gob.ar/modules/field/theme/field.css?q2rmqg");
+            @import url("https://www.suipacha.gob.ar/modules/node/node.css?q2rmqg");
+            @import url("https://www.suipacha.gob.ar/sites/all/modules/views/css/views.css?q2rmqg");
+        </style>
+        <style>
+            @import url("https://www.suipacha.gob.ar/sites/all/modules/ctools/css/ctools.css?q2rmqg");
+            @import url("https://www.suipacha.gob.ar/sites/all/modules/panels/css/panels.css?q2rmqg");
+            @import url("https://www.suipacha.gob.ar/sites/all/themes/bootstrap/layouts/inicio/inicio.css?q2rmqg");
+        </style>
+        <style>
+            @import url("https://www.suipacha.gob.ar/sites/all/themes/bootstrap/css/bootstrapFlaty.css?q2rmqg");
+            @import url("https://www.suipacha.gob.ar/sites/all/themes/bootstrap/css/bootswatchFlaty.css?q2rmqg");
+            @import url("https://www.suipacha.gob.ar/sites/all/themes/bootstrap/css/user.css?q2rmqg");
+
+            .btn-circle {
+                width: 6%;
+                height: 6%;
+                text-align: center;
+                padding: 6px 0;
+                font-size: 3em;
+                line-height: 1.42;
+                border-radius: 100px;
+            }
+            .btn-color{
+                background-color: #0dbcf7;
+            }
+        </style>
+
+
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    </h:head>
+    <body style="overflow: hidden;">
+        <div>
+            <section id="block-views-view-pie-pagina-municipio-block" class="block block-views clearfix">
+
+
+                <div class="view-content">
+                    <div>
+                        <a href="../index.html">
+                            <div class="logo-municipio">        <span><img typeof="foaf:Image" class="img-thumbnail img-responsive" src="https://www.suipacha.gob.ar/sites/default/files/ciudad_0.png" width="342" height="80" alt=""/></span>  </div>  </a> 
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div style="border-top:3px solid #ddd"></div>
+        <div ><center><h1>Sistema de Gestión de Expedientes</h1></center></div>
+
+        <div style="margin-top: 3%" id="busqueda">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="input-group">
+                 <h:form style="float: right; background-color: #F4F8FA;margin-top: 1%;" class="mrgBtn">    
+                    <span class="input-group-addon" id="basic-addon1">Nº Expediente / DNI</span>
+                    
+                    <p:inputText value="#{tbExpedienteController.caratulaSelected}" class="form-control" placeholder="Ingrese Nro de Expediente o DNI"  />
+                    <h:commandButton class="hoverBlue" value="Filtrar por DNI o CARATULA" actionListener="#{tbExpedienteController.filtrarPorDniOCaratula(tbExpedienteController.getCaratulaSelected())}"
+                                 style="width: 82%; padding: 0.5%; font-family: bolt; font-weight:bold; background: #4fb2e1; border-color: #9FCBD4;color: white; border-radius: 7px 7px 7px 7px; margin-left: 10px;" />
+                
+
+                </h:form>
+
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div style="margin-top: 8%" id="resultado">
+            
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Demandante</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Caratula</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Secretaría</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Situación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Juan Lopez</td>
+                            <td>33254344</td>
+                            <td>011-SG-201030-045</td>
+                            <td>Mejorar alumbrado calle Rivadavia 100/200</td>
+                            <td>Obras Públicas</td>
+                            <td style="background-color: blueviolet">En Tratamiento</td>
+                            <td></td>
+                        </tr>                        
+                    </tbody>
+                </table>
+            </div>
+           
+           <p:panel header="#{bundle.ListTbExpedienteTitle}">
+                    <p:dataTable id="datalist" value="#{tbExpedienteController.items}" var="item"
+                                 selectionMode="single" selection="#{tbExpedienteController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.expedienteID}"
+                                 rows="10"
+                                 filteredValue="#{tbExpedienteController.itemsFiltered}"
+                             
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_expedienteID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.expedienteID}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_demandante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.demandante}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_seguimiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.seguimiento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_nroCaratula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nroCaratula}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_fechaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInicio}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_resolucion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resolucion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_clasificacionDemanda}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clasificacionDemanda}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_descripcionDemanda}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionDemanda}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_barrio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.barrio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_prioridad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prioridad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_tipologiaID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipologiaID}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTbExpedienteTitle_grupoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grupoId}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </p:panel> 
+            
+        </div>
+
+        <div style="margin-top: 17%;">
+            <footer class="footer container" >
+
+                <div class="footer-municipio">
+                    <div class="region region-footer">
+
+                        <section id="block-views-view-pie-pagina-municipio-block" class="block block-views clearfix">
+
+
+                            <div class="view-content">
+                                <div style="margin-top:10%;">
+
+                                    <div class="logo-municipio">        <span><img typeof="foaf:Image" class="img-thumbnail img-responsive" src="https://www.suipacha.gob.ar/sites/default/files/ciudad_0.png" width="342" height="80" alt="" /></span>  </div>  
+                                    <div class="info-municipio">        <span><p>Municipalidad de Suipacha<br />
+                                                San Martín 325 - CP (6612) - Suipacha<br />
+                                                Provincia de Buenos Aires</p></span>  </div>  
+                                    <div class="telefono_municipio">        <span><img typeof="foaf:Image" class="img-thumbnail img-responsive" src="https://www.suipacha.gob.ar/sites/default/files/pie_prensa.png" width="659" height="212" alt="" /></span>  </div>  </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+
+            </footer>
+        </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </body>
+</html>

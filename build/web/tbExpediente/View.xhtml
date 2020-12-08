@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbExpedienteViewDlg" widgetVar="TbExpedienteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTbExpedienteTitle}">
+            <h:form id="TbExpedienteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbExpedienteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_expedienteID}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.expedienteID}" title="#{bundle.ViewTbExpedienteTitle_expedienteID}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_demandante}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.demandante}" title="#{bundle.ViewTbExpedienteTitle_demandante}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_seguimiento}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.seguimiento}" title="#{bundle.ViewTbExpedienteTitle_seguimiento}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_nroCaratula}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.nroCaratula}" title="#{bundle.ViewTbExpedienteTitle_nroCaratula}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_fechaInicio}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.fechaInicio}" title="#{bundle.ViewTbExpedienteTitle_fechaInicio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_fechaFin}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.fechaFin}" title="#{bundle.ViewTbExpedienteTitle_fechaFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_resolucion}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.resolucion}" title="#{bundle.ViewTbExpedienteTitle_resolucion}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_clasificacionDemanda}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.clasificacionDemanda}" title="#{bundle.ViewTbExpedienteTitle_clasificacionDemanda}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_descripcionDemanda}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.descripcionDemanda}" title="#{bundle.ViewTbExpedienteTitle_descripcionDemanda}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_barrio}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.barrio}" title="#{bundle.ViewTbExpedienteTitle_barrio}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_prioridad}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.prioridad}" title="#{bundle.ViewTbExpedienteTitle_prioridad}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_tipologiaID}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.tipologiaID}" title="#{bundle.ViewTbExpedienteTitle_tipologiaID}"/>
+                        <h:outputText value="#{bundle.ViewTbExpedienteLabel_grupoId}"/>
+                        <h:outputText value="#{tbExpedienteController.selected.grupoId}" title="#{bundle.ViewTbExpedienteTitle_grupoId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TbExpedienteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbUsuariosViewDlg" widgetVar="TbUsuariosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTbUsuariosTitle}">
+            <h:form id="TbUsuariosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbUsuariosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTbUsuariosLabel_usuarioID}"/>
+                        <h:outputText value="#{tbUsuariosController.selected.usuarioID}" title="#{bundle.ViewTbUsuariosTitle_usuarioID}"/>
+                        <h:outputText value="#{bundle.ViewTbUsuariosLabel_empleado}"/>
+                        <h:outputText value="#{tbUsuariosController.selected.empleado}" title="#{bundle.ViewTbUsuariosTitle_empleado}"/>
+                        <h:outputText value="#{bundle.ViewTbUsuariosLabel_usrNombre}"/>
+                        <h:outputText value="#{tbUsuariosController.selected.usrNombre}" title="#{bundle.ViewTbUsuariosTitle_usrNombre}"/>
+                        <h:outputText value="#{bundle.ViewTbUsuariosLabel_usrClave}"/>
+                        <h:outputText value="#{tbUsuariosController.selected.usrClave}" title="#{bundle.ViewTbUsuariosTitle_usrClave}"/>
+                        <h:outputText value="#{bundle.ViewTbUsuariosLabel_usrRol}"/>
+                        <h:outputText value="#{tbUsuariosController.selected.usrRol}" title="#{bundle.ViewTbUsuariosTitle_usrRol}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TbUsuariosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbUsuariosEditDlg" widgetVar="TbUsuariosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbUsuariosTitle}">
+            <h:form id="TbUsuariosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbUsuariosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbUsuariosLabel_usuarioID}" for="usuarioID" />
+                        <p:inputText id="usuarioID" value="#{tbUsuariosController.selected.usuarioID}" title="#{bundle.EditTbUsuariosTitle_usuarioID}" required="true" requiredMessage="#{bundle.EditTbUsuariosRequiredMessage_usuarioID}"/>
+                        <p:outputLabel value="#{bundle.EditTbUsuariosLabel_empleado}" for="empleado" />
+                        <p:inputText id="empleado" value="#{tbUsuariosController.selected.empleado}" title="#{bundle.EditTbUsuariosTitle_empleado}" required="true" requiredMessage="#{bundle.EditTbUsuariosRequiredMessage_empleado}"/>
+                        <p:outputLabel value="#{bundle.EditTbUsuariosLabel_usrNombre}" for="usrNombre" />
+                        <p:inputText id="usrNombre" value="#{tbUsuariosController.selected.usrNombre}" title="#{bundle.EditTbUsuariosTitle_usrNombre}" />
+                        <p:outputLabel value="#{bundle.EditTbUsuariosLabel_usrClave}" for="usrClave" />
+                        <p:inputText id="usrClave" value="#{tbUsuariosController.selected.usrClave}" title="#{bundle.EditTbUsuariosTitle_usrClave}" />
+                        <p:outputLabel value="#{bundle.EditTbUsuariosLabel_usrRol}" for="usrRol" />
+                        <p:inputText id="usrRol" value="#{tbUsuariosController.selected.usrRol}" title="#{bundle.EditTbUsuariosTitle_usrRol}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbUsuariosController.update}" value="#{bundle.Save}" update="display,:TbUsuariosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbUsuariosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbUsuariosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

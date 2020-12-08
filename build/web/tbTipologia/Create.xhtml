@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbTipologiaCreateDlg" widgetVar="TbTipologiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTbTipologiaTitle}">
+            <h:form id="TbTipologiaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbTipologiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTbTipologiaLabel_tipologiaID}" for="tipologiaID" />
+                        <p:inputText id="tipologiaID" value="#{tbTipologiaController.selected.tipologiaID}" title="#{bundle.CreateTbTipologiaTitle_tipologiaID}" required="true" requiredMessage="#{bundle.CreateTbTipologiaRequiredMessage_tipologiaID}"/>
+                        <p:outputLabel value="#{bundle.CreateTbTipologiaLabel_grupoResolutor}" for="grupoResolutor" />
+                        <p:inputText id="grupoResolutor" value="#{tbTipologiaController.selected.grupoResolutor}" title="#{bundle.CreateTbTipologiaTitle_grupoResolutor}" required="true" requiredMessage="#{bundle.CreateTbTipologiaRequiredMessage_grupoResolutor}"/>
+                        <p:outputLabel value="#{bundle.CreateTbTipologiaLabel_tipologiaN1}" for="tipologiaN1" />
+                        <p:inputText id="tipologiaN1" value="#{tbTipologiaController.selected.tipologiaN1}" title="#{bundle.CreateTbTipologiaTitle_tipologiaN1}" />
+                        <p:outputLabel value="#{bundle.CreateTbTipologiaLabel_tipologiaN2}" for="tipologiaN2" />
+                        <p:inputText id="tipologiaN2" value="#{tbTipologiaController.selected.tipologiaN2}" title="#{bundle.CreateTbTipologiaTitle_tipologiaN2}" />
+                        <p:outputLabel value="#{bundle.CreateTbTipologiaLabel_tipologiaN3}" for="tipologiaN3" />
+                        <p:inputText id="tipologiaN3" value="#{tbTipologiaController.selected.tipologiaN3}" title="#{bundle.CreateTbTipologiaTitle_tipologiaN3}" />
+                        <p:outputLabel value="#{bundle.CreateTbTipologiaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{tbTipologiaController.selected.descripcion}" title="#{bundle.CreateTbTipologiaTitle_descripcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbTipologiaController.create}" value="#{bundle.Save}" update="display,:TbTipologiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TbTipologiaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbTipologiaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

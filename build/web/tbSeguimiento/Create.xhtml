@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbSeguimientoCreateDlg" widgetVar="TbSeguimientoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTbSeguimientoTitle}">
+            <h:form id="TbSeguimientoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbSeguimientoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTbSeguimientoLabel_seguimientoID}" for="seguimientoID" />
+                        <p:inputText id="seguimientoID" value="#{tbSeguimientoController.selected.seguimientoID}" title="#{bundle.CreateTbSeguimientoTitle_seguimientoID}" required="true" requiredMessage="#{bundle.CreateTbSeguimientoRequiredMessage_seguimientoID}"/>
+                        <p:outputLabel value="#{bundle.CreateTbSeguimientoLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{tbSeguimientoController.selected.estado}" title="#{bundle.CreateTbSeguimientoTitle_estado}" required="true" requiredMessage="#{bundle.CreateTbSeguimientoRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.CreateTbSeguimientoLabel_situacion}" for="situacion" />
+                        <p:inputText id="situacion" value="#{tbSeguimientoController.selected.situacion}" title="#{bundle.CreateTbSeguimientoTitle_situacion}" />
+                        <p:outputLabel value="#{bundle.CreateTbSeguimientoLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{tbSeguimientoController.selected.usuario}" title="#{bundle.CreateTbSeguimientoTitle_usuario}" required="true" requiredMessage="#{bundle.CreateTbSeguimientoRequiredMessage_usuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbSeguimientoController.create}" value="#{bundle.Save}" update="display,:TbSeguimientoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TbSeguimientoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbSeguimientoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
