@@ -34,8 +34,15 @@
                         <p:inputText id="barrio" value="#{tbExpedienteController.selected.barrio}" title="#{bundle.CreateTbExpedienteTitle_barrio}" />
                         <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_prioridad}" for="prioridad" />
                         <p:inputText id="prioridad" value="#{tbExpedienteController.selected.prioridad}" title="#{bundle.CreateTbExpedienteTitle_prioridad}" />
+
                         <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_tipologiaID}" for="tipologiaID" />
-                        <p:inputText id="tipologiaID" value="#{tbExpedienteController.selected.tipologiaID}" title="#{bundle.CreateTbExpedienteTitle_tipologiaID}" />
+
+                        <p:selectOneMenu  id="tipologiaID" value="#{tbExpedienteController.selected.tipologiaID}"  >
+                            <f:selectItems value="#{tbTipologiaController.itemsAvailableSelectOne}" var="tipologia" itemLabel="#{tipologia.tipologiaN1}" itemValue="#{tipologia.tipologiaID}" />
+                        </p:selectOneMenu>
+
+
+
                         <p:outputLabel value="#{bundle.CreateTbExpedienteLabel_grupoId}" for="grupoId" />
                         <p:inputText id="grupoId" value="#{tbExpedienteController.selected.grupoId}" title="#{bundle.CreateTbExpedienteTitle_grupoId}" />
                     </p:panelGrid>

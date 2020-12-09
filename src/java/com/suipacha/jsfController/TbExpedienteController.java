@@ -6,7 +6,11 @@ import com.suipacha.jsfController.util.JsfUtil.PersistAction;
 import com.suipacha.jsf.TbExpedienteFacade;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -71,9 +75,21 @@ public class TbExpedienteController implements Serializable {
         return ejbFacade;
     }
 
-    public TbExpediente prepareCreate() {
+    public TbExpediente prepareCreate() throws ParseException {
         selected = new TbExpediente();
+        
         initializeEmbeddableKey();
+        
+        Calendar currentDate = Calendar.getInstance(); //Get the current date 
+    SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyy"); //format it as per your requirement 
+    String dateNow = formatter.format(currentDate.getTime()); 
+    Date dateAhora = formatter.parse(dateNow);
+//System.out.println("Now the date is :=> " + dateNow); 
+        selected.setFechaInicio(dateAhora);
+        
+        
+        
+        
         return selected;
     }
 
